@@ -1,0 +1,258 @@
+/* style.css (玻璃拟态 Glassmorphism 主题) */
+
+/* --- 1. 全局样式和背景优化 --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff; /* 全局文本改为白色，适应深色背景 */
+    user-select: none;
+    touch-action: manipulation; 
+    
+    /* 核心修改：深邃渐变背景，营造沉浸感 */
+    background: linear-gradient(135deg, #1f2746 0%, #301f40 100%); 
+}
+
+/* --- 2. 播放器卡片优化：玻璃拟态效果 --- */
+.player-container {
+    width: 90%;
+    max-width: 450px;
+    
+    /* 核心修改：半透明背景和背景模糊 */
+    background: rgba(255, 255, 255, 0.08); /* 极浅的白色透明度 */
+    backdrop-filter: blur(15px); /* 关键的玻璃模糊效果 */
+    -webkit-backdrop-filter: blur(15px); /* 兼容 Safari */
+    
+    border-radius: 24px; 
+    border: 1px solid rgba(255, 255, 255, 0.18); /* 半透明边框，增强玻璃质感 */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* --- 3. 歌曲信息 --- */
+.song-info {
+    margin-bottom: 30px;
+}
+
+#current-title {
+    font-size: 1.6em;
+    font-weight: 700;
+    margin: 10px 0 5px;
+    /* 文本保持白色 */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* 增加阴影，在玻璃上更清晰 */
+}
+
+#current-artist {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.7); /* 艺术家名柔和显示 */
+    margin-bottom: 20px;
+}
+
+/* 专辑封面 */
+.album-art {
+    width: 180px; /* 增大封面尺寸 */
+    height: 180px;
+    margin: 0 auto 30px;
+    border-radius: 16px;
+    overflow: hidden;
+    /* 封面阴影更深邃 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+    /* 保持动画 */
+    animation: pulse 10s infinite cubic-bezier(0.5, 0, 0.5, 1); 
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.01); }
+  100% { transform: scale(1); }
+}
+
+#album-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- 4. 进度条 --- */
+.progress-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+#current-time, #duration {
+    font-size: 0.9em;
+    width: 40px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.progress-bar-wrapper {
+    flex-grow: 1;
+}
+
+/* 进度条基础样式 */
+#progress-bar {
+    width: 100%;
+    height: 8px; /* 略微增粗 */
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255, 255, 255, 0.2); /* 轨道使用玻璃背景 */
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 进度条拖动条样式 */
+#progress-bar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; 
+    height: 20px;
+    background: #00e6ff; /* 使用亮色系，例如青色，更具科技感 */
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 230, 255, 0.8);
+}
+
+#progress-bar::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #00e6ff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+
+/* --- 5. 控制按钮 --- */
+.controls {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7); /* 默认颜色柔和 */
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1.3em;
+    transition: color 0.2s ease, transform 0.1s ease;
+}
+
+.controls button:hover,
+.controls button:focus {
+    color: #fff; /* 悬停时纯白 */
+    outline: none;
+}
+
+.controls button:active {
+    transform: scale(0.9);
+}
+
+.main-control {
+    font-size: 3em; /* 增大主按钮 */
+    color: #00e6ff; /* 突出主按钮 */
+    text-shadow: 0 0 5px rgba(0, 230, 255, 0.5);
+}
+
+/* 模式按钮特殊颜色 */
+#mode-btn i {
+    color: inherit; /* 继承父元素颜色 */
+}
+
+
+/* --- 6. 播放列表 --- */
+.playlist {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* 半透明分割线 */
+    max-height: 250px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.playlist.hidden {
+    display: none;
+}
+
+#song-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#song-list li {
+    padding: 10px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background-color 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#song-list li:last-child {
+    border-bottom: none;
+}
+
+#song-list li:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* 悬停时变亮 */
+}
+
+#song-list li.playing {
+    font-weight: bold;
+    color: #00e6ff; /* 正在播放高亮 */
+    background-color: rgba(0, 230, 255, 0.1);
+    border-radius: 4px;
+}
+
+/* --- 7. 错误和骨架屏样式适配 (深色模式) --- */
+.error-message {
+    color: #ff3b30;
+    background-color: rgba(255, 0, 0, 0.2); /* 半透明红色背景 */
+    border: 1px solid #ff3b30;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    display: none;
+}
+.error-message.show { display: block; }
+.hidden { display: none !important; }
+
+/* 骨架屏适配深色背景 */
+.skeleton {
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    color: transparent !important; 
+    border-radius: 4px;
+}
+.album-art.skeleton-img {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    animation: loading 1.5s infinite; 
+}
+
+/* 保持文本占位符高度和宽度不变 */
+.skeleton-text { height: 1.5em; width: 80%; margin: 10px auto 5px; display: block; }
+.skeleton-text-small { height: 1em; width: 40%; margin: 5px auto 20px; display: block; }
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}

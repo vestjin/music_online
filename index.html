@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简约移动音乐播放器</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="player-container">
+        
+        <div class="song-info">
+            <h1 id="current-title" class="skeleton skeleton-text">正在加载...</h1>
+            <p id="current-artist" class="skeleton skeleton-text-small"> - </p>
+            
+            <div class="album-art skeleton skeleton-img">
+                <img id="album-cover" src="cover.jpg" alt="专辑封面" style="display: none;"> </div>
+            
+            <div id="error-message" class="error-message hidden"></div>
+        </div>
+
+        <div class="progress-area">
+            <span id="current-time">0:00</span>
+            <div class="progress-bar-wrapper">
+                <input type="range" id="progress-bar" min="0" max="100" value="0" step="0.1">
+            </div>
+            <span id="duration">0:00</span>
+        </div>
+
+        <div class="controls">
+            <button id="prev-btn" title="上一首"><i class="fas fa-backward"></i></button>
+            <button id="play-pause-btn" class="main-control" title="播放"><i class="fas fa-play"></i></button>
+            <button id="next-btn" title="下一首"><i class="fas fa-forward"></i></button>
+            <button id="mode-btn" title="列表循环"><i class="fas fa-redo-alt"></i></button>
+            <button id="list-toggle-btn" title="播放列表"><i class="fas fa-list-ul"></i></button>
+        </div>
+
+        <div id="playlist" class="playlist hidden">
+            <ul id="song-list">
+            </ul>
+        </div>
+
+    </div>
+
+    <audio id="audio-player" preload="auto"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
