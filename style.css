@@ -256,3 +256,27 @@ body {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
+
+/* --- 8. 新增：搜索框样式 --- */
+.search-box {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 0.95em;
+    outline: none;
+    box-sizing: border-box;
+    transition: background 0.3s ease, border 0.3s ease;
+}
+
+.search-box::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.search-box:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(0, 230, 255, 0.5);
+}
