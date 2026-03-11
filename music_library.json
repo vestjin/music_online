@@ -30,7 +30,7 @@
         "id": 5
     },
     {
-        "fileName": "Lemon_Tree-Fool_s_Garden-Dish_of_the_Day.opus",
+        "fileName": "Lemon_Tree-Fool s_Garden-Dish_of_the_Day.opus",
         "title": "Lemon Tree",
         "artist": "Fool's Garden",
         "id": 6
@@ -202,5 +202,11 @@
         "title": "ひまわりの約束",
         "artist": "秦基博",
         "id": 34
+    },
+    {
+        "fileName": "Waiting for Love-Avicii .opus",
+        "title": "Waiting for love",
+        "artist": "Avicii",
+        "id": 35
     }
 ]
